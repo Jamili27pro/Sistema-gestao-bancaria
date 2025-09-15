@@ -1,4 +1,4 @@
-package Aulas.java;
+/*package Aulas.java;
 
 import java.sql.SQLOutput;
 import java.util.Scanner;
@@ -208,13 +208,16 @@ import java.util.Scanner;
 
 
 
+package Aulas.java;
+
 public class Main {
     public static void main(String[] args) {
         Bilheteria bilheteria = new Bilheteria();
         bilheteria.atendimento();
-
     }
 }
+
+
 
 
 

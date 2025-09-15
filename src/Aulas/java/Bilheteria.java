@@ -1,4 +1,5 @@
-package Aulas.java;
+package Aulas
+        .java;
 
 import java.util.Scanner;
 
@@ -6,10 +7,10 @@ public class Bilheteria {
     private int quantIngressos;
     private int quantInteira;
     private int quantMeia;
+    private int quantPromocional;
     private int quantGratuitos;
     private double total;
 
-    // Getters e Setters
     public int getQuantIngressos() { return quantIngressos; }
     public void setQuantIngressos(int quantIngressos) { this.quantIngressos = quantIngressos; }
 
@@ -19,101 +20,55 @@ public class Bilheteria {
     public int getQuantMeia() { return quantMeia; }
     public void setQuantMeia(int quantMeia) { this.quantMeia = quantMeia; }
 
+    public int getQuantPromocional() { return quantPromocional; }
+    public void setQuantPromocional(int quantPromocional) { this.quantPromocional = quantPromocional; }
+
     public int getQuantGratuitos() { return quantGratuitos; }
     public void setQuantGratuitos(int quantGratuitos) { this.quantGratuitos = quantGratuitos; }
 
     public double getTotal() { return total; }
     public void setTotal(double total) { this.total = total; }
 
-
     public void atendimento() {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             Venda venda = new Venda();
-            venda.processoVenda();
+            venda.processoVenda(sc);
             venda.resumoPorCliente();
 
-
+            // soma total de ingressos vendidos
             setQuantIngressos(getQuantIngressos() + venda.getQuantidade());
 
-
-            if (venda.getTipoVenda().equalsIgnoreCase("Inteira")) {
+            String tipoVenda = venda.getTipo_venda();
+            if (tipoVenda.equalsIgnoreCase("Inteira")) {
                 setQuantInteira(getQuantInteira() + venda.getQuantidade());
-            }
-            else if (venda.getTipoVenda().equalsIgnoreCase("Meia")) {
+            } else if (tipoVenda.equalsIgnoreCase("Meia")) {
                 setQuantMeia(getQuantMeia() + venda.getQuantidade());
-            }
-            else if (venda.getTipoVenda().equalsIgnoreCase("Promocional")) {
+            } else if (tipoVenda.equalsIgnoreCase("Promocional")) {
+                setQuantPromocional(getQuantPromocional() + venda.getQuantidade());
+            } else if (tipoVenda.equalsIgnoreCase("Gratuito")) {
                 setQuantGratuitos(getQuantGratuitos() + venda.getQuantidade());
             }
-            else {
-                setQuantGratuitos(getQuantGratuitos() + venda.getQuantidade());
-            }
 
-
-            setTotal(getTotal() + venda.getValorFinal());
-
+            setTotal(getTotal() + venda.getValor_final());
 
             System.out.print("\nAtender próximo cliente? (Sim/Não): ");
             String resposta = sc.nextLine().trim();
             if (resposta.equalsIgnoreCase("Não")) {
-                break; // Aqui vai sair do loop
+                break;
             }
 
             System.out.println("--------------------------------");
         }
 
-
-        System.out.println("------------------------------");
+        // resumo final
+        System.out.println("\n============= RESUMO FINAL =============");
         System.out.println("Total de ingressos vendidos: " + getQuantIngressos());
         System.out.println("Inteira: " + getQuantInteira());
         System.out.println("Meia: " + getQuantMeia());
-        System.out.println("Promocional/Gratuitos: " + getQuantGratuitos());
+        System.out.println("Promocional: " + getQuantPromocional());
+        System.out.println("Gratuitos: " + getQuantGratuitos());
         System.out.printf("Valor total arrecadado: R$ %.2f%n", getTotal());
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
