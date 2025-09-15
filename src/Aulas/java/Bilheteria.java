@@ -39,7 +39,7 @@ public class Bilheteria {
             venda.processoVenda(sc);
             venda.resumoPorCliente();
 
-            // soma total de ingressos vendidos
+
             setQuantIngressos(getQuantIngressos() + venda.getQuantidade());
 
             String tipoVenda = venda.getTipo_venda();
@@ -64,7 +64,7 @@ public class Bilheteria {
             System.out.println("--------------------------------");
         }
 
-        // resumo final
+
         System.out.println("\n============= RESUMO FINAL =============");
         System.out.println("Total de ingressos vendidos: " + getQuantIngressos());
         System.out.println("Inteira: " + getQuantInteira());

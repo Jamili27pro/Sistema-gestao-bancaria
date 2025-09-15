@@ -19,14 +19,14 @@ public class Venda {
     public double getValor_final() { return valor_final; }
     public String getFilme() { return filme; }
 
-    // agora recebe Scanner de fora
+
     public void processoVenda(Scanner sc) {
         escolherFilme(sc);
 
         do {
             System.out.print("Informe a quantidade de ingressos: ");
             quantidade = sc.nextInt();
-            sc.nextLine(); // consome o enter
+            sc.nextLine();
         } while (quantidade <= 0);
 
         do {
