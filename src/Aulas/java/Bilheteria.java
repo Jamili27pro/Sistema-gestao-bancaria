@@ -1,5 +1,7 @@
-package Aulas
-        .java;
+package Aulas.java;
+
+//Jamili Martins de Oliveira e Natália dos Santos Nascimento.
+
 
 import java.util.Scanner;
 
